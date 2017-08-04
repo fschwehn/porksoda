@@ -1,0 +1,27 @@
+{
+  "name": "porksoda",
+  "version": "0.0.0",
+  "description": "Experimental site management module for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/mocha",
+    "testdev": "mocha test/mocha --watch",
+    "testmin": "mocha test/mocha --watch --reporter min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fschwehn/porksoda.git"
+  },
+  "keywords": [
+    "site",
+    "navigation",
+    "routing",
+    "access control"
+  ],
+  "author": "Florian Schwehn <fschwehn@gmail.com> (https://github.com/fschwehn)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fschwehn/porksoda/issues"
+  },
+  "homepage": "https://github.com/fschwehn/porksoda#readme"
+}
