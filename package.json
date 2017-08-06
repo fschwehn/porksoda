@@ -1,6 +1,6 @@
 {
   "name": "porksoda",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Experimental site management module for Node.js",
   "main": "index.js",
   "scripts": {
@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/fschwehn/porksoda/issues"
   },
-  "homepage": "https://github.com/fschwehn/porksoda#readme"
+  "homepage": "https://github.com/fschwehn/porksoda#readme",
+  "dependencies": {
+    "common-errors": "^1.0.4",
+    "underscore": "^1.8.3"
+  }
 }

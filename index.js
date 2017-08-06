@@ -1,2 +1,1 @@
-module.exports = 'porksoda'
-  
+module.exports.Site = require('./lib/Site')
