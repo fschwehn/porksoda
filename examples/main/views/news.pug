@@ -1,0 +1,10 @@
+extends layout
+
+block append content
+  ul.nav.nav-tabs
+    for node in controller.children
+      +nav_item(node.url(), node.activeClass(req))= node.name
+
+  h3 The Story
+
+  p Aenean ut magna diam. Cras ornare nunc id pretium cursus. Nullam a ante at orci mollis pharetra. Curabitur in egestas metus, et sodales lectus. Donec mollis tincidunt ligula, ac rhoncus felis bibendum id. Nulla facilisi. Vestibulum scelerisque dictum elementum. Vestibulum aliquam efficitur eros sit amet ullamcorper. Nunc ornare mi ac nulla sollicitudin blandit. Cras et tincidunt purus. Integer interdum purus diam. Praesent et risus eros. Mauris orci metus, iaculis ac justo at, lobortis hendrerit urna. Suspendisse sed vehicula justo. Aenean venenatis euismod placerat.

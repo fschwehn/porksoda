@@ -1,2 +1,5 @@
-module.exports.Site = require('./lib/Site')
-module.exports.Controller = require('./lib/Controller')
+exports.Node = require('./lib/Node')
+exports.Endpoint = require('./lib/Endpoint')
+exports.Route = require('./lib/Route')
+exports.Controller = require('./lib/Controller')
+exports.Site = require('./lib/Site')

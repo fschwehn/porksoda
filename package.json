@@ -1,6 +1,6 @@
 {
   "name": "porksoda",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Experimental site management module for Node.js",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
+    "jade-bootstrap": "^1.0.14",
     "pug": "^2.0.0-rc.3"
   }
 }

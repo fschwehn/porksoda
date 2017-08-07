@@ -1,43 +1,46 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    title= title
-    style.
-      body {
-        font-family: Menlo, monospace;
-      }
-      .row {
-        display: table-row;
-        width: 100%;
-      }
-      .col {
-        display: table-cell;
-      }
-      .row > .col:not(:last-child) {
-        padding-right: 2em;
-      }
+extends ../../../node_modules/jade-bootstrap/_bootstrap
 
-  body
-    h1= title
+mixin tree(node)
+  ul
+    for child in node.children
+      li= child.path || child.name
+        if child.children
+          +tree(child)
+    
+block append styles
+  style.
+    h1 {
+      font-size: 20px;
+    }
 
-    table
-      thead
-        tr
-          th controller
-          th route
-      tbody
-        tr
-          td= controller.name
-          td= route.name
+block body
+  .container
+    .row
+      .col-sm-offset-3.col-sm-9
+        h1= title
+
+    hr
 
     .row
-      ul.col
-        li
-          a(href='/') Home
-        li
-          a(href='/blog') Blog
+      .col-sm-3
+        +panel-info('locals')= Object.keys(req.res.locals).join(', ')
 
-      .col
-        h2= pageTitle
+        +panel-info('page info')
+          dl
+            dt controller
+            dd= controller.name
+            
+            dt route
+            dd= route.name
+
+        +panel-info('site tree')
+          +tree(root)
+
+      .col-sm-9
         block content
+          +navbar('Project name')
+            for node in root.children
+              +nav_item(node.url(), node.activeClass(req))= node.name
+
+          h2= route.name
+

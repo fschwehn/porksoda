@@ -1,7 +1,25 @@
 extends layout
 
-block content
-  p sparkly grunting
-  
-  form(method="POST")
-    button(type='submit') post some lines
+block append styles
+  style.
+    ul.post-list li.active a:before {
+      content: '▶︎ ';
+    }
+
+block append content
+  if !selectedPost
+    form.form-inline(method="POST")
+      | tell us what you think: 
+      input.form-control.input-sm(type='text')
+      |  
+      button.btn.btn-sm.btn-primary(type='submit') post it!
+
+  h3 List of latest Posts
+  ul.post-list
+    for post, i in posts
+      li.nav(class!= (post == selectedPost) ? 'active': null)
+        a(href='/blog/' + i)= post.title
+
+  if selectedPost
+    h3= selectedPost.title
+    p= selectedPost.text
