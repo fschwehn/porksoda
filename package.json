@@ -26,6 +26,11 @@
   "homepage": "https://github.com/fschwehn/porksoda#readme",
   "dependencies": {
     "common-errors": "^1.0.4",
-    "underscore": "^1.8.3"
+    "express": "^4.15.3",
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.3.4"
+  },
+  "devDependencies": {
+    "pug": "^2.0.0-rc.3"
   }
 }

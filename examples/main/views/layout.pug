@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title= title
+    style.
+      body {
+        font-family: Menlo, monospace;
+      }
+      .row {
+        display: table-row;
+        width: 100%;
+      }
+      .col {
+        display: table-cell;
+      }
+      .row > .col:not(:last-child) {
+        padding-right: 2em;
+      }
+
+  body
+    h1= title
+
+    table
+      thead
+        tr
+          th controller
+          th route
+      tbody
+        tr
+          td= controller.name
+          td= route.name
+
+    .row
+      ul.col
+        li
+          a(href='/') Home
+        li
+          a(href='/blog') Blog
+
+      .col
+        h2= pageTitle
+        block content
