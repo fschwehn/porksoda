@@ -13,7 +13,7 @@ const express = require('express')
 app.locals.title = 'porksoda - main example'
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.enable('view cache');
+// app.enable('view cache');
 
 const blogPosts = [
   { title: 'A damn good story', text: 'Mauris lobortis odio ut libero ultrices euismod. Pellentesque auctor bibendum dui, tincidunt.' },

@@ -31,6 +31,7 @@
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
+    "express-session": "^1.15.5",
     "jade-bootstrap": "^1.0.14",
     "pug": "^2.0.0-rc.3"
   }

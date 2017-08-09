@@ -38,9 +38,16 @@ block body
 
       .col-sm-9
         block content
-          +navbar
-            for node in root.children
-              +nav_item(node.url(), node.activeClass(req))= node.name
+          .navbar.navbar-default
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav
+                for node in root.children[0].children
+                  if node.visible(req)
+                    +nav_item(node.url(), node.activeClass(req))= node.name
+              ul.nav.navbar-nav.navbar-right
+                for node in root.children[1].children
+                  if node.visible(req)
+                    +nav_item(node.url())= node.name
 
           h2= route.name
 
