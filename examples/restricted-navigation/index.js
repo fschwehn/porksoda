@@ -38,7 +38,7 @@ const frontend = new Site({
           endpoints: [
             {
               method: 'get',
-              callback: (req, res, next) => res.render('generic')
+              callback: (req, res, next) => res.render('layout')
             }
           ]
         },
@@ -49,7 +49,7 @@ const frontend = new Site({
           endpoints: [
             {
               method: 'get',
-              callback: (req, res, next) => res.render('generic')
+              callback: (req, res, next) => res.render('layout')
             }
           ],
         },
