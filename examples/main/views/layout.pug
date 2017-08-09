@@ -34,12 +34,12 @@ block body
             dd= route.name
 
         +panel-info('site tree')
-          +tree(root)
+          +tree(site)
 
       .col-sm-9
         block content
           +navbar
-            for node in root.children
+            for node in site.children
               +nav_item(node.url(), node.activeClass(req))= node.name
 
           h2= route.name
