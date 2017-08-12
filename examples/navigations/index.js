@@ -46,7 +46,7 @@ const frontend = new Site({
       path: '/about',
       routes: [
         {
-          path: '/',
+          path: '',
           name: 'About',
           endpoints: genericEndpoints
         },
