@@ -37,18 +37,18 @@ block body
           +tree(site)
 
       .col-sm-9
+        .navbar.navbar-default
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav
+              for node in site.children[0].children
+                if node.visible(req)
+                  +nav_item(node.url, node.activeClass(req))= node.name
+            ul.nav.navbar-nav.navbar-right
+              for node in site.children[1].children
+                if node.visible(req)
+                  +nav_item(node.url)= node.name
+
+        h2= route.name
+
         block content
-          .navbar.navbar-default
-            .collapse.navbar-collapse
-              ul.nav.navbar-nav
-                for node in site.children[0].children
-                  if node.visible(req)
-                    +nav_item(node.url, node.activeClass(req))= node.name
-              ul.nav.navbar-nav.navbar-right
-                for node in site.children[1].children
-                  if node.visible(req)
-                    +nav_item(node.url)= node.name
-
-          h2= route.name
-
-          p lorem grunt
+          a(href='/protected')= req.session.authenticated ? 'accessible link to Protected' : 'inaccessible link to Protected'

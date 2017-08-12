@@ -14,7 +14,6 @@ const express = require('express')
 app.locals.title = 'porksoda - restricted navigation'
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// app.enable('view cache');
 
 app.use(session({
   resave: true,
@@ -25,12 +24,19 @@ app.use(session({
 const loggedIn = req => req.session.authenticated
     , loggedOut = req => !loggedIn(req)
 
+const protectionMiddleware = (req, res, next) => {
+  if (req.session.authenticated)
+    next()
+  else
+    res.render('401')
+}
+
 const frontend = new Site({
   name: 'Root',
   path: '/',
   controllers: [
     {
-      name: 'public',
+      name: 'main',
       routes: [
         {
           path: '/',
@@ -45,6 +51,7 @@ const frontend = new Site({
         {
           path: '/protected',
           name: 'Protected',
+          accessible: protectionMiddleware,
           visible: loggedIn,
           endpoints: [
             {
@@ -56,7 +63,7 @@ const frontend = new Site({
       ]
     },
     {
-      name: 'protected',
+      name: 'auth',
       routes: [
         {
           path: '/login',
