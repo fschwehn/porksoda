@@ -43,11 +43,11 @@ block body
               ul.nav.navbar-nav
                 for node in site.children[0].children
                   if node.visible(req)
-                    +nav_item(node.url(), node.activeClass(req))= node.name
+                    +nav_item(node.url, node.activeClass(req))= node.name
               ul.nav.navbar-nav.navbar-right
                 for node in site.children[1].children
                   if node.visible(req)
-                    +nav_item(node.url())= node.name
+                    +nav_item(node.url)= node.name
 
           h2= route.name
 

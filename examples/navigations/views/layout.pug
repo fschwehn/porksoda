@@ -6,7 +6,21 @@ mixin tree(node)
       li= child.path || child.name
         if child.children
           +tree(child)
-    
+
+mixin navItem(node)
+  if node.visible(req)
+    if node.children
+      li.dropdown(class=node.activeClass(req))
+        a.dropdown-toggle(href="#" data-toggle="dropdown")= node.name
+          span.caret
+        ul.dropdown-menu
+          for child in node.children
+            +navItem(child)
+    else
+      li(class=node.activeClass(req))
+        a(href=node.url)= node.name
+
+
 block append styles
   style.
     h1 {
@@ -38,9 +52,15 @@ block body
 
       .col-sm-9
         block content
-          +navbar
-            for node in site.children
-              +nav_item(node.url, node.activeClass(req))= node.name
+          .navbar.navbar-default
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav
+                for node in site.navigations.main.children
+                  +navItem(node)
+              ul.nav.navbar-nav.nav.pull-right
+                for node in site.navigations.hot.children
+                  +navItem(node)
 
           h2= route.name
 
+          p lorem grunt

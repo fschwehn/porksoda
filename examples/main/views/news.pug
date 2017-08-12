@@ -3,7 +3,7 @@ extends layout
 block append content
   ul.nav.nav-tabs
     for node in controller.children
-      +nav_item(node.url(), node.activeClass(req))= node.name
+      +nav_item(node.url, node.activeClass(req))= node.name
 
   h3 The Story
 

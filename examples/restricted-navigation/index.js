@@ -91,6 +91,7 @@ const frontend = new Site({
   ],
 })
 
+frontend.resolvePaths()
 frontend.applyMiddleware(app)
 
 app.listen(3000)
