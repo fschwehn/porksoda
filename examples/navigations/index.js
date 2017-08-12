@@ -17,10 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // app.enable('view cache');
 
-const genericEndpoints = [{
-  method: 'get',
-  callback: (req, res, next) => res.render('layout')
-}]
+const genericEndpoint = (req, res, next) => res.render('layout')
 
 const frontend = new Site({
   name: 'Navigations',
@@ -32,12 +29,12 @@ const frontend = new Site({
         {
           path: '/',
           name: 'Home',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
         {
           path: '/around/thecorner',
           name: 'The Corner',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
       ]
     },
@@ -48,12 +45,12 @@ const frontend = new Site({
         {
           path: '',
           name: 'About',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
         {
           path: '/you',
           name: 'We know all about you',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
       ]
     },
@@ -64,12 +61,12 @@ const frontend = new Site({
         {
           path: '/politics',
           name: 'Politics',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
         {
           path: '/sports',
           name: 'Sports',
-          endpoints: genericEndpoints
+          get: genericEndpoint
         },
       ]
     },
@@ -77,13 +74,13 @@ const frontend = new Site({
   navigations: {
     main: {
       items: [
-        { path: '/' },
-        { path: '/about' },
+        '/',
+        '/about',
         {
           path: '/news',
           items: [
-            { path: './politics' },
-            { path: './sports' },
+            './politics',
+            './sports',
           ]
         }
       ]
@@ -96,14 +93,8 @@ const frontend = new Site({
         {
           name: 'for you',
           items: [
-            {
-              name: 'atc',
-              path: '/around/thecorner',
-            },
-            {
-              name: 'ab',
-              path: '/about/you',
-            },
+            '/around/thecorner',
+            '/about/you',
           ]
         }
       ]

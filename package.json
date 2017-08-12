@@ -1,6 +1,6 @@
 {
   "name": "porksoda",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Experimental site management module for Node.js",
   "main": "index.js",
   "scripts": {

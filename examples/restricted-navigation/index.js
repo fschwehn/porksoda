@@ -41,24 +41,14 @@ const frontend = new Site({
         {
           path: '/',
           name: 'Home',
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => res.render('layout')
-            }
-          ]
+          get: (req, res, next) => res.render('layout'),
         },
         {
           path: '/protected',
           name: 'Protected',
           accessible: protectionMiddleware,
           visible: loggedIn,
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => res.render('layout')
-            }
-          ],
+          get: (req, res, next) => res.render('layout')
         },
       ]
     },
@@ -69,29 +59,19 @@ const frontend = new Site({
           path: '/login',
           name: 'Login',
           visible: loggedOut,
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => {
-                req.session.authenticated = true
-                res.redirect('/')
-              }
-            }
-          ],
+          get: (req, res, next) => {
+            req.session.authenticated = true
+            res.redirect('/')
+          }
         },
         {
           path: '/logout',
           name: 'Logout',
           visible: loggedIn,
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => {
-                req.session.authenticated = false
-                res.redirect('/')
-              }
-            }
-          ],
+          get: (req, res, next) => {
+            req.session.authenticated = false
+            res.redirect('/')
+          }
         },
       ]
     }

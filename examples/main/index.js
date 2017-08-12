@@ -34,7 +34,7 @@ const blogPostGetEndpoint = new Endpoint({
 const blogPostRoute = new Route({
   path: '/:post',
   name: 'Post',
-  endpoints: [ blogPostGetEndpoint ]
+  get: blogPostGetEndpoint
 })
 
 const blogController = new Controller({
@@ -44,16 +44,8 @@ const blogController = new Controller({
     {
       path: '/',
       name: 'Blog',
-      endpoints: [
-        {
-          method: 'get',
-          callback: (req, res, next) => res.render('blog', { posts: blogPosts })
-        },
-        {
-          method: 'post',
-          callback: (req, res, next) => res.redirect('./blog')
-        },
-      ]
+      get: (req, res, next) => res.render('blog', { posts: blogPosts }),
+      post: (req, res, next) => res.redirect('./blog')
     },
     blogPostRoute,
   ]
@@ -66,12 +58,7 @@ const frontend = new Site({
     {
       path: '/',
       name: 'Home',
-      endpoints: [
-        {
-          method: 'get',
-          callback: (req, res, next) => res.render('home')
-        }
-      ]
+      get: (req, res, next) => res.render('home')
     },
   ],
   controllers: [
@@ -82,42 +69,22 @@ const frontend = new Site({
       routes: [
         {
           path: '/',
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res) => res.redirect(path.join(req.originalUrl, 'breaking'))
-            }
-          ]
+          get: (req, res) => res.redirect(path.join(req.originalUrl, 'breaking'))
         },
         {
           path: '/breaking',
           name: 'Breaking News',
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => res.render('news')
-            }
-          ]
+          get: (req, res, next) => res.render('news')
         },
         {
           path: '/politics',
           name: 'Politics',
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => res.render('news')
-            }
-          ]
+          get: (req, res, next) => res.render('news')
         },
         {
           path: '/technology',
           name: 'Technology',
-          endpoints: [
-            {
-              method: 'get',
-              callback: (req, res, next) => res.render('news')
-            }
-          ]
+          get: (req, res, next) => res.render('news')
         },
       ]
     }
