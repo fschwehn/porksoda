@@ -51,7 +51,7 @@ const blogController = new Controller({
   ]
 })
 
-const frontend = new Site({
+const frontend = new Site(app, {
   name: 'Root',
   path: '/',
   routes: [
@@ -90,9 +90,6 @@ const frontend = new Site({
     }
   ]
 })
-
-frontend.resolvePaths()
-frontend.applyMiddleware(app)
 
 app.listen(3000)
 console.log('Express started on port 3000')

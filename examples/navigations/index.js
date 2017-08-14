@@ -19,7 +19,7 @@ app.set('view engine', 'pug');
 
 const genericEndpoint = (req, res, next) => res.render('layout')
 
-const frontend = new Site({
+const frontend = new Site(app, {
   name: 'Navigations',
   path: '/',
   controllers: [
@@ -98,12 +98,8 @@ const frontend = new Site({
   }
 })
 
-frontend.resolvePaths()
-
 // log(Object.keys(frontend.pathMap))
 // log(frontend.navigations.main)
-
-frontend.applyMiddleware(app)
 
 app.listen(3000)
 console.log('Express started on port 3000')

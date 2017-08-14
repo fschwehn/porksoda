@@ -31,7 +31,7 @@ const protectionMiddleware = (req, res, next) => {
     res.render('401')
 }
 
-const frontend = new Site({
+const frontend = new Site(app, {
   name: 'Root',
   path: '/',
   controllers: [
@@ -46,7 +46,7 @@ const frontend = new Site({
         {
           path: '/protected',
           name: 'Protected',
-          accessible: protectionMiddleware,
+          authentication: protectionMiddleware,
           visible: loggedIn,
           get: (req, res, next) => res.render('layout')
         },
@@ -77,9 +77,6 @@ const frontend = new Site({
     }
   ],
 })
-
-frontend.resolvePaths()
-frontend.applyMiddleware(app)
 
 app.listen(3000)
 console.log('Express started on port 3000')
